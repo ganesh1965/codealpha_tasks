@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery Showcase</title>
+
+
+
+    <!-- Font Awesome for Social Media Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link src="style.css" >
+</head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    /* Header */
+    header {
+      background-color: #1a1a1a;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px;
+    }
+
+    .gallery img {
+      width: 250px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Showcase Slider (Initially Hidden) */
+    .slider-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .slider {
+      display: flex;
+      width: 80%;
+      max-width: 800px;
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+      background-color: black;
+    }
+
+    .slide {
+      width: 100%;
+      flex: 0 0 100%;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .slide-text {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    /* Slider Controls */
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 5px;
+    }
+
+    .prev {
+      left: 15px;
+    }
+
+    .next {
+      right: 15px;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Close Button */
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: cyan;
+    }
+
+    @media (max-width: 768px) {
+      .gallery img {
+        width: 100%;
+      }
+
+      .slider {
+        width: 95%;
+      }
+
+      .slide img {
+        height: 300px;
+      }
+
+      .prev,
+      .next {
+        font-size: 24px;
+        padding: 8px;
+      }
+    }
+</style>
+
+<body>
+
+<!-- Header -->
+<header>
+    Image Gallery | Capture & Explore
+</header>
+
+<!-- Image Gallery -->
+<div class="gallery">
+    <img src="img1.jpg" alt="Serene Ocean" onclick="openSlider(0)">
+    <img src="img2.jpg" alt="Misty Mountain" onclick="openSlider(1)">
+    <img src="img3.jpg" alt="Starry Sky" onclick="openSlider(2)">
+    <img src="img4.jpg" alt="Autumn Forest" onclick="openSlider(3)">
+    <img src="img5.jpg" alt="Desert Dunes" onclick="openSlider(4)">
+    <img src="img6.jpg" alt="Waterfall" onclick="openSlider(5)">
+    <img src="img7.jpg" alt="Snowy Peaks" onclick="openSlider(6)">
+    <img src="img8.jpg" alt="Sunset Beach" onclick="openSlider(7)">
+    <img src="img9.jpg" alt="Lake Reflection" onclick="openSlider(8)">
+    <img src="img10.jpg" alt="Tropical Paradise" onclick="openSlider(9)">
+    <img src="img11.jpg" alt="Wildflower Field" onclick="openSlider(10)">
+    <img src="img12.jpg" alt="City Night Lights" onclick="openSlider(11)">
+    <img src="img13.jpg" alt="Foggy Forest" onclick="openSlider(12)">
+    <img src="img14.jpg" alt="Northern Lights" onclick="openSlider(13)">
+    <img src="img15.jpg" alt="Golden Horizon" onclick="openSlider(14)">
+    <img src="img16.jpg" alt="Rolling Hills" onclick="openSlider(15)">
+    <img src="img16.jpg" alt="Rolling Hills" onclick="openSlider(16)">
+    <img src="img16.jpg" alt="Rolling Hills" onclick="openSlider(17)">
+    <img src="img16.jpg" alt="Rolling Hills" onclick="openSlider(18)">
+    <img src="img16.jpg" alt="Rolling Hills" onclick="openSlider(19)">
+    <img src="img16.jpg" alt="Rolling Hills" onclick="openSlider(20)">
+</div>
+
+<!-- Image Showcase Slider -->
+<div class="slider-container" id="slider-container">
+    <button class="close-btn" onclick="closeSlider()">✖</button>
+    <div class="slider" id="slider">
+        <div class="slide">
+            <img src="img1.jpg" alt="Serene Ocean">
+            <div class="slide-text">🌊 Serene Ocean View</div>
+        </div>
+        <div class="slide">
+            <img src="img2.jpg" alt="Misty Mountain">
+            <div class="slide-text">🏔️ Misty Mountain</div>
+        </div>
+        <div class="slide">
+            <img src="img3.jpg" alt="Starry Sky">
+            <div class="slide-text">🌌 Starry Night Sky</div>
+        </div>
+        <div class="slide">
+            <img src="img4.jpg" alt="Autumn Forest">
+            <div class="slide-text">🍂 Colorful Autumn</div>
+        </div>
+        <div class="slide">
+            <img src="img5.jpg" alt="Desert Dunes">
+            <div class="slide-text">🏜️ Rolling Desert Dunes</div>
+        </div>
+        <div class="slide">
+            <img src="img6.jpg" alt="Waterfall">
+            <div class="slide-text">💦 Majestic Waterfall</div>
+        </div>
+        <div class="slide">
+            <img src="img7.jpg" alt="Snowy Peaks">
+            <div class="slide-text">❄️ Snowy Mountain Peaks</div>
+        </div>
+        <div class="slide">
+            <img src="img8.jpg" alt="Sunset Beach">
+            <div class="slide-text">🌅 Sunset on the Beach</div>
+        </div>
+        <div class="slide">
+            <img src="img9.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img10.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img11.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img12.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img13.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img14.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img15.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img16.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img17.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img18.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img19.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+        <div class="slide">
+            <img src="img20.jpg" alt="Serene Ocean">
+            <div class="slide-text"></div>
+        </div>
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Image Gallery | Designed for Photography Enthusiasts</p>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+</footer>
+
+<script >
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const sliderContainer = document.getElementById("slider-container");
+
+    function openSlider(index) {
+      slideIndex = index;
+      sliderContainer.style.display = "flex";
+      updateSlide();
+    }
+
+    function closeSlider() {
+      sliderContainer.style.display = "none";
+    }
+
+    function changeSlide(step) {
+      slideIndex += step;
+      if (slideIndex < 0) slideIndex = slides.length - 1;
+      if (slideIndex >= slides.length) slideIndex = 0;
+      updateSlide();
+    }
+
+    function updateSlide() {
+      slides.forEach((slide, i) => {
+        slide.style.display = i === slideIndex ? "block" : "none";
+      });
+    }
+</script>
+
+
+</body>
+
+</html>
